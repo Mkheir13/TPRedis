@@ -6,9 +6,11 @@
 
 #### 1.1.1 Installation de Docker
 
-Pour installer Docker, il suffit de suivre les instructions sur le site officiel de Docker : https://docs.docker.com/get-docker/
+Pour installer Docker, il suffit de suivre les instructions sur le site officiel de
+Docker : https://docs.docker.com/get-docker/
 
-On choisit l'environnement Docker étant donné que c'est le plus simple à installer vu qu'on l'a déjà utilisé dans les ateliers précédents.
+On choisit l'environnement Docker étant donné que c'est le plus simple à installer vu qu'on l'a déjà utilisé dans les
+ateliers précédents.
 
 #### 1.1.2 Installation de Docker Compose
 
@@ -86,7 +88,6 @@ docker exec -it <container_id> redis-cli -c -p 6379
 
 le paramètre `-c` permet de se connecter à un cluster Redis tandis que le paramètre `-p` permet de spécifier le port.
 
-
 Ensuite, on injecte les données suivantes:
 
 pour les strings:
@@ -149,7 +150,6 @@ zrange users:age 0 -1
 
 ![img_1.png](img_1.png)
 
-
 ## Partie 3: Intégration de Redis dans un Projet
 
 ### 3.1 Installation de Redis dans un Projet python
@@ -161,4 +161,62 @@ pip install redis
 ```
 
 ### 3.2 Utilisation de Redis dans un Projet
+
+On va créer un fichier `app.py` pour tester Redis dans un projet python:
+
+```python
+import redis
+
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+r.set('name', 'kheir')
+
+print(r.get('name'))
+```
+
+Pour exécuter le fichier, on exécute la commande suivante:
+
+```bash
+python app.py
+```
+
+## Partie 4: Introspection sur l'Intégration de Redis
+
+### 4.1 Évaluation des Projets Actuels
+
+#### 4.1.1 Identifier des projets existants où Redis pourrait être intégré
+
+- Projet 1: Application de gestion de stock
+    - Pour stocker les données des produits, des commandes et des clients.
+    - Pour stocker les données des sessions utilisateur.
+    - Pour stocker les données des paniers d'achat.
+    - Pour stocker les données des notifications en temps réel.
+
+- Projet 2: Application de gestion des utilisateurs
+    - Pour stocker les données des utilisateurs, des rôles et des permissions.
+    - Pour stocker les données des sessions utilisateur.
+    - Pour stocker les données des notifications en temps réel.
+    - Pour stocker les données des likes et des partages.
+  
+- Projet 3: Application de gestion des commandes
+    - Pour stocker les données des commandes, des produits et des clients.
+    - Pour stocker les données des sessions utilisateur.
+    - Pour stocker les données des paniers d'achat.
+    - Pour stocker les données des notifications en temps réel.
+
+#### 4.1.2 Évaluer les avantages potentiels (performance, scalabilité, etc.)
+
+- Performance: Redis est très rapide et peut gérer des millions de requêtes par seconde.
+- Scalabilité: Redis est distribué et peut être utilisé pour créer des clusters Redis.
+- Fiabilité: Redis est très fiable et peut être utilisé pour créer des systèmes hautement disponibles.
+- Facilité d'utilisation: Redis est très facile à utiliser et peut être intégré dans n'importe quel projet.
+- Flexibilité: Redis est très flexible et peut être utilisé pour stocker n'importe quel type de données.
+- Sécurité: Redis est très sécurisé et peut être utilisé pour stocker des données sensibles.
+- Coût: Redis est open source et gratuit à utiliser.
+
+
+
+
+
+
 
