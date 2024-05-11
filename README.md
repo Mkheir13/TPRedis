@@ -73,7 +73,7 @@ docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' <co
 Une fois qu'on a récupéré les adresses IP, on peut créer le cluster Redis:
 
 ```bash
-docker exec -it <container_id> redis-cli --cluster create <ip1>:6379 <ip2>:6380 <ip3>:6381 --cluster-replicas 0
+docker exec -it <container_id> redis-cli --cluster create <ip1>:6379 <ip2>:6379 <ip3>:6379 --cluster-replicas 0
 ```
 
 ## Partie 2 : Premiers Pas avec le Cluster Redis
